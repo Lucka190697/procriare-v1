@@ -1,0 +1,55 @@
+<div class="form-group mb-3">
+    <label class="form-control-label" for="pai">
+        Filiação Paterna, (Pai)
+        <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+        @if($errors->has('father'))
+            <div class="float-lg-right badge badge-danger mb-2">
+                Campo Pai é Necessário!
+            </div>
+        @endif
+    </label>
+    <select
+        name="father" id="pai"
+        class="form-control border{{$errors->has('father') ? 'text-danger border-danger is-invalid' : ''}}">
+        <option value="" selected> Selecione</option>
+        <option value="unknow">Touro Desconhecido</option>
+        @foreach ($animals as $item)
+            @if (($item->sex == 'male') && ($item->class == 'touro'))
+                <option value="{{ $item->id }}">[ {{ $item->id }} ] {{ $item->name }} </option>
+            @endif
+        @endforeach
+    </select>
+    <small class="text-warning">
+        É preciso que o Touro pai esteja cadastrado.<br>
+        Se não, cadastre este primeiro como pai desconhecido!
+    </small>
+</div>
+
+<div class="form-group mb-3">
+    <label class="form-control-label" for="mae">
+        Filiação Materna, (Mãe)
+        <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+        @if($errors->has('mother'))
+            <div class="float-lg-right badge badge-danger mb-2">
+                Campo Mãe é Necessário!
+            </div>
+        @endif
+    </label>
+    <select
+        name="mother" id="mae"
+        class="form-control border {{$errors->has('mother') ? 'text-danger border-danger is-invalid' : ''}}">
+        <option value="" selected> Selecione</option>
+        <option value="unknow"> Mae Desconhecida</option>
+        @foreach ($animals as $item)
+            @if (($item->sexo == 'femeale') && (($item->class == 'lactante')) || ($item->class == 'seca'))
+                <option value="{{ $item->id }}">
+                    [ {{ $item->id }} ] - {{ $item->name }}, {{ $item->class }}
+                </option>
+            @endif
+        @endforeach
+    </select>
+    <small class="text-warning">
+        Se a mãe não estiver cadastrada cadastre-a primeiro<br>
+        Se não mantenha "Desconhecida"
+    </small>
+</div>
