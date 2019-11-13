@@ -21,7 +21,7 @@ Class AnimalRepository
         $data = $request->all();
         if ($request->thumbnail != null) {
             $profile = $request->file('thumbnail');
-            request()->thumbnail->move('storage/profiles', $request->name);
+            request()->thumbnail->move(public_path('animals/'), $request->name);
             $data = $request->all();
             $data['thumbnail'] = $request->name;
             return $data;

@@ -69,7 +69,7 @@ class UserRepository
 
     public function updateProfileimage($data, $userRequest)
     {
-        $data = $userRequest->all();
+//        $data = $userRequest->all();
         if ($userRequest->thumbnail != null) {
             $profile = $userRequest->file('thumbnail');
             request()->thumbnail->move('storage/profiles', $userRequest->name);

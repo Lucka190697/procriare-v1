@@ -1,16 +1,18 @@
 <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
         @if(Session::has('alert-' . $msg))
-            <div class="alert alert-info text-left">
-                <a href="#" class="close" data-dismiss="alert" aria-label="fechar">&times;</a>
-                @foreach ($cios as $cio)
-                @endforeach
-                @if(isset ($cio))
+            @foreach ($cios as $cio)
+            @endforeach
+            @if(isset($title) && $title == 'create-cio'))
+            @if(isset ($cio))
+                <div class="alert alert-info text-left">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="fechar">&times;</a>
                     <p> O Registro de {{$cio->id}} foi registrado!</p>
-                    <p> Parto Previsto para: {{$cio->dt_parto_previsto}} </p>
+                    <p> Parto Previsto para: {{$cio->date_childbirth_foreseen}} </p>
                     <p> Status do Cio: {{$cio->status}} </p>
-                @endif
-            </div>
+                </div>
+            @endif
+            @endif
         @endif
     @endforeach
 </div>

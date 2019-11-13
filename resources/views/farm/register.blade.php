@@ -29,13 +29,12 @@
     <div class="container mt--150 pb-0">
         <!-- Table -->
         <div class="row"><!--justify-content-center-->
-
             <div class="col-lg-5 col-md-8">
                 <div class="text-left mb-4">
                     <div class="card bg-secondary shadow border-0">
                         <div class="card-body px-lg-5 py-lg-5">
                             <h1 class="text-justify">Cadastre sua Fazenda</h1>
-                            <h2>Só mais um momento</h2>
+                            <h2>Mais uma etapa</h2>
                             <p>
                                 Cadastre sua fazenda com os dados solicitados.
                             </p>

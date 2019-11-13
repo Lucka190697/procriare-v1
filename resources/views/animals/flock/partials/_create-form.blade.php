@@ -57,23 +57,6 @@
                 <small class="form-text"> Dia, mês e ano que o animal nasceu</small>
             </div>
             <div class="form-group mb-3">
-                <!-- Data de Nascimento -->
-                <label class="form-control-label" for="sexo"> Sexo </label>
-                <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                @if($errors->has('sex'))
-                    <div class="float-lg-right badge badge-danger mb-2">
-                        Selecione este campo com "Macho" ou "Fêmea"
-                    </div>
-                @endif
-                <select
-                    class="form-control border {{$errors->has('sex') ? 'text-danger border-danger is-invalid' : ''}}"
-                    id="sexo" name="sex" required>
-                    <option value="" selected>Selecione</option>
-                    <option value="femeale" name="Fêmea"> Femea</option>
-                    <option value="male" name="Macho"> Macho</option>
-                </select>
-            </div>
-            <div class="form-group mb-3">
                 <!-- Raça -->
                 <label class="form-control-label" for="raca">
                     Raça
@@ -100,6 +83,23 @@
                     <option value="Outra">Outra</option>
                 </select>
             </div>
+            <div class="form-group mb-3">
+                <!-- Data de Nascimento -->
+                <label class="form-control-label" for="sexo"> Sexo </label>
+                <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+                @if($errors->has('sex'))
+                    <div class="float-lg-right badge badge-danger mb-2">
+                        Selecione este campo com "Macho" ou "Fêmea"
+                    </div>
+                @endif
+                <select
+                    class="form-control border {{$errors->has('sex') ? 'text-danger border-danger is-invalid' : ''}}"
+                    id="sex" name="sex" required>
+                    <option value="" selected>Selecione</option>
+                    <option id="femeale" value="femeale"> Femea</option>
+                    <option id="male" value="male"> Macho</option>
+                </select>
+            </div>
         </div>
     </div>
     <div class="col-1"></div>
@@ -119,28 +119,28 @@
                 id="classificacao" name="class" required
                 data-value="{{old('class') ?? $item->class ?? '' }}">
                 <option value="" selected>Selecione</option>
-                <option value="heifer">
+                <option id="heifer" value="heifer">
                     Novilha (Fêmea que já atingiu a maturidade sexual mas ainda não criou)
                 </option>
-                <option value="cow-lactating">
+                <option id="cow-lactating" value="cow-lactating">
                     Vaca Lactante (Fêmea sexualmente ativa e que está produzindo leite)
                 </option>
-                <option value="cow-non-lactating">
+                <option id="cow-non-lactating" value="cow-non-lactating">
                     Vaca Não Lactante (Fêmea sexualmente ativa mas que não está produzindo leite)
                 </option>
-                <option value="cow-dry">
+                <option id="cow-dry" value="cow-dry">
                     Vaca Seca (Fêmea sexualmente ativa que não está lactando por quanto)
                 </option>
-                <option value="she-calves">
+                <option id="she-calves" value="she-calves">
                     Bezerra (Fêmea recém nascida até o desmame)
                 </option>
-                <option value="bull-reproductive">
+                <option id="bull-reproductive" value="bull-reproductive">
                     Touro (Macho sexualmente ativo)
                 </option>
-                <option value="bull-castrated">
+                <option id="bull-castrated" value="bull-castrated">
                     Capão (Macho castrado)
                 </option>
-                <option value="bull-ruffian">
+                <option id="bull-ruffian" value="bull-ruffian">
                     Bezerro (Macho recém nascido até o desmame)
                 </option>
             </select>
@@ -209,7 +209,7 @@
                 <option value="" selected> Selecione</option>
                 <option value="unknow"> Mae Desconhecida</option>
                 @foreach ($animals as $item)
-                    @if (($item->sexo == 'femeale') && (($item->class == 'cow-lactating'))
+                    @if (($item->sex == 'femeale') && (($item->class == 'cow-lactating'))
                      || ($item->class == 'cow-non-lactating') || ($item->class = 'heifer'))
                         <option value="{{ $item->id }}">
                             [ {{ $item->id }} ] - {{ $item->name }}, {{ $item->class }}
@@ -222,7 +222,6 @@
                 Se não mantenha "Desconhecida"
             </small>
         </div>
-
         <!-- /filiacao -->
         <div class="form-group mb-3">
             <label class="form-control-label" for="status">
@@ -249,3 +248,20 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sex").blur(function () {
+            if ($("#sex").val() === "femeale") {
+                $("#bull-reproductive").hide();
+                $("#bull-castrated").hide();
+                $("#bull-ruffian").hide();
+            } else if ($("#sex").val() === "male") {
+                $("#heifer").hide();
+                $("#cow-lactating").hide();
+                $("#cow-non-lactating").hide();
+                $("#cow-dry").hide();
+                $("#she-calves").hide();
+            }
+        });
+    });
+</script>

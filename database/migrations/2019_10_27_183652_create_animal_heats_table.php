@@ -17,10 +17,10 @@ class CreateAnimalHeatsTable extends Migration
     {
         Schema::create('animal_heats', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('date_animal_heat');//dt cio
-            $table->string('date_coverage');//dt cobertura
-            $table->string('date_childbirth')->nullable();//dt parto
-            $table->string('date_childbirth_foreseen')->nullable(); //dt parto previsto
+            $table->timestamp('date_animal_heat');//dt cio
+            $table->timestamp('date_coverage');//dt cobertura
+            $table->timestamp('date_childbirth')->nullable();//dt parto
+            $table->timestamp('date_childbirth_foreseen')->nullable(); //dt parto previsto
             $table->string('father')->nullable();//pai
             $table->enum('childbirth_type', AnimalHeatChildbirthTypeEnum::getConstantsValues()); //tipo: insemination ou natural
             $table->enum('status', AnimalHeatStatusEnum::getConstantsValues()); //status: active, inactive ou pending
@@ -30,6 +30,8 @@ class CreateAnimalHeatsTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+
+            $table->softDeletes();
 
             $table->timestamps();
         });

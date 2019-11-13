@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
+use App\Http\Requests\FarmRequest;
 use App\Models\User;
 use App\Models\Farm;
 
@@ -22,20 +23,22 @@ class FarmController extends Controller
         return view('farm.register', compact('roles', 'title'));
     }
 
-    public function store(Request $request, Farm $farm, User $user)
+    public function store(FarmRequest $request, Farm $farm, User $user)
     {
+        $title = 'complete-profile';
         $data = $request->all();
         $data['id'] = auth()->user()->id;
         $data['auth_user'] = auth()->user()->id;
 
         $user->farm()->create($data);
+        $request->messages();
 
         $user->assignRole($request->input('roles'));
 
         if (!$user->hasRole(\App\Enums\UserRolesEnum::ADMIN)) {
             $user->assignRole(\App\Enums\UserRolesEnum::ADMIN);
         }
-        return view('profile.edit');
+        return view('farm.profile');
     }
 
     public function edit(Farm $farm, User $user)

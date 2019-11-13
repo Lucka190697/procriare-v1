@@ -177,6 +177,11 @@ return [
 
         Spatie\Permission\PermissionServiceProvider::class,
 
+        /*LARAVEL DOOM PDF*/
+
+        Barryvdh\DomPDF\ServiceProvider::class,
+
+
     ],
 
     /*
@@ -228,6 +233,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*LARAVEL DOOM PDF*/
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

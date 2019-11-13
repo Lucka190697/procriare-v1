@@ -7,12 +7,12 @@
                     Selecione o animal que apresentou Cio
                 </label>
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                <select name="id_animals" id="id" class="form-control">
+                <select name="animal_id" id="id" class="form-control">
                     @foreach($animals as $animal)
                     @endforeach
-                        <option value="{{ $cios->id }}" selected>
-                            [ {{ $cios->id }} ] - {{ $animal->name }}
-                        </option>
+                    <option value="{{ $cios->id }}" selected>
+                        [ {{ $cios->id }} ] - {{ $animal->name }}
+                    </option>
                 </select>
                 <small>
                     Qual animal apresentou cio?
@@ -37,7 +37,7 @@
                     Data de Cobertura
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 </label>
-                <input name="date_coverage {{ $errors->has('date_coverage') ? ' has-danger' : '' }}"
+                <input name="date_coverage"
                        type="date"
                        id="dt_cobertura"
                        class="form-control {{ $errors->has('date_coverage') ? ' is-invalid' : '' }}"
@@ -53,24 +53,59 @@
         <div class="ml-2 form-group">
             <div class="form-group mb-3">
                 <label class="form-control-label" for="childbirth_type">
-                    childbirth_type de cobertura
+                    Data de cobertura
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 </label>
                 <select class="form-control" id="childbirth_type" name="childbirth_type" required>
                     <option value="{{old('childbirth_type') ?? $cios->childbirth_type ?? '' }}" selected>
-                        {{ $cios->childbirth_type }}
+                        @if($cios->childbirth_type == 'natural')
+                            Monta Natural
+                        @elseif($cios->childbirth_type == 'insemination')
+                            Inseminação Artificial
+                        @endif
                     </option>
-                    <option value="Inseminaçao" name="Inseminaçao">
-                        Inseminaçao Artificial
-                    </option>
-                    <option value="Natural" name="Natural">
-                        Monta Natural
-                    </option>
+                    @if($cios->childbirth_type == 'insemination')
+                        <option value="natural">Monta Natural</option>
+                    @elseif($cios->childbirth_type == 'natural')
+                        <option value="insemination">Inseminação Artificial</option>
+                    @endif
                 </select>
                 <small>
                     De maneira foi a cobertura?
                 </small>
             </div>
+        </div>
+
+        <div class="form-group mb-3 {{$errors->has('status') ? 'text-danger border-danger is-invalid' : ''}}">
+            <label class="form-control-label" for="status">
+                Status
+                <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+                @if($errors->has('status'))
+                    <div class="float-lg-right badge badge-danger mb-2">
+                        Este campo é necessário!
+                    </div>
+                @endif
+            </label>
+            <br>
+            <small class="text-success">Sucesso</small>
+            <small>A gestação foi um sucesso, a seguir registrar o bezerro</small><br>
+            <small class="text-warning">Pendente</small>
+            <small>A gestação ainda está acontecendo</small><br>
+            <small class="text-danger">Aborto</small>
+            <small>O animal abortou</small>
+            <select
+                class="form-control border {{$errors->has('status') ? 'text-danger border-danger is-invalid' : ''}}"
+                id="status" name="status" required>
+                <option value="">Selecione</option>
+                <option value="pending" selected>Pendente</option>
+                <option value="abortion">Aborto</option>
+                @if($cios->date_childbirth_foreseen < today())
+                    <option value="success">Sucesso</option>
+                @endif
+            </select>
+            <small>
+                De maneira foi a cobertura?
+            </small>
         </div>
 
         <div class="form-group mb-3" id="current-bull">

@@ -47,7 +47,8 @@
             </div>
 
             <!-- dt_cobertura -->
-            <div class="form-group mb-3 {{ $errors->has('date_coverage') ? 'text-danger border-danger is-invalid' : '' }}">
+            <div
+                class="form-group mb-3 {{ $errors->has('date_coverage') ? 'text-danger border-danger is-invalid' : '' }}">
                 <label class="form-control-label" for="date_coverage">
                     Data de Cobertura
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
@@ -72,7 +73,8 @@
     <div class="col-lg-5 col-sm-12 text-black">
         <div class="ml-2 form-group">
             <!-- tipo -->
-            <div class="form-group mb-3 {{$errors->has('childbirth_type') ? 'text-danger border-danger is-invalid' : ''}}">
+            <div
+                class="form-group mb-3 {{$errors->has('childbirth_type') ? 'text-danger border-danger is-invalid' : ''}}">
                 <label class="form-control-label" for="tipo">
                     Tipo de cobertura
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
@@ -116,11 +118,13 @@
                     <option value="Desconhecido" selected>
                         Selecione
                     </option>
-                    @if ($animals->sex == 'male')
-                        <option value="{{$animals->id}}">
-                            [ {{ $animals->id }} ] - {{ $animals->name }}
-                        </option>
-                    @endif
+                    @foreach($flock as $rebanho)
+                        @if (($rebanho->sex == 'male') && ($rebanho->class == 'bull-reproductive'))
+                            <option value="{{$rebanho->id}}">
+                                [ {{ $rebanho->id }} ] - {{ $rebanho->name }}
+                            </option>
+                        @endif
+                    @endforeach
                 </select>
                 <!-- Adicionar um touro nao listado -->
                 <button class="btn btn-white text-primary col-12" type="button" id="add-input">
@@ -172,6 +176,7 @@
             </fieldset>
         </div>
     </div>
+</div>
 </div>
 
 <!--/filiação -->

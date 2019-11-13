@@ -46,19 +46,17 @@
                         <div class="card-header">
                             Usuários
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table align-items-center">
-                                    @include('users.partials.table._head')
-                                    <tbody>
-                                    @foreach ($users as $user)
-                                        @if($user->farm_id ==  auth()->user()->id)
-                                            @include('users.partials.table._body')
-                                        @endif
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush table-bordered">
+                                @include('users.partials.table._head')
+                                <tbody>
+                                @foreach ($users as $user)
+                                    @if($user->farm_id ==  auth()->user()->id)
+                                        @include('users.partials.table._body')
+                                    @endif
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div class="card-footer py-4">

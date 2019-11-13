@@ -78,7 +78,8 @@ class UserController extends Controller
 
     public function update(UserRequest $userRequest, UserRepository $auxiliaryClass, $id)
     {
-        $data = $auxiliaryClass->updateProfileimage($userRequest);
+        $data = $userRequest->all();
+        $data = $auxiliaryClass->updateProfileimage($data, $userRequest);
         $data = $auxiliaryClass->updateUser($data);
 
         $user = User::find($id);

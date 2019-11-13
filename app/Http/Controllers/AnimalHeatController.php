@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use App\Services\AnimalServices;
 use App\Http\Requests\CioRequest;
 use App\Models\AnimalHeat;
-
 use App\Repositories\CioRepository;
 use App\Models\Animal;
-use http\Env\Request;
+use Illuminate\Support\Facades\Request;
 
 
 class AnimalHeatController extends Controller
@@ -28,22 +27,56 @@ class AnimalHeatController extends Controller
     {
         $title = 'Create new Animal';
         $animals = Animal::find($id);
+        $flock = Animal::all();
 
-        return view('animals.flock.cios.create', compact('animals', 'title'));
+        return view('animals.flock.cios.create', compact('animals', 'flock', 'title'));
     }
 
-    public function store(CioRequest $request, AnimalServices $services)
+    public function store(CioRequest $request, AnimalHeat $animalHeat, AnimalServices $services)
     {
+        $title = 'create-cio';
         $data = $request->all();
+        $data = $services->animal_id($request, $data);
         $data = $services->managementFather($request, $data);
+        $data = $services->status($request, $data);
         $data = $services->partoPrevisto($request, $data);
-        $data = $services->createCio($request, $data);
+        $data = $services->create_by($request, $data);
 
-        $cios = AnimalHeat::create($data);
+        $animalHeat->create($data);
 
-        $request->messages();
+        $mensagem = $request->mensagem;
+        $request->session()->flash('alert-warning', 'Cio Atualizado !',
+            'alert-danger', 'Oops! não foi possível atuaizar!');
 
-        return redirect()->route('cio.index');
+        return redirect()->route('cio.index')->with($title);
+    }
+
+    public function edit(AnimalHeat $animalHeat, $id)
+    {
+        $title = 'Edit Cio';
+        $cios = AnimalHeat::find($id);
+        $animals = Animal::all();
+
+        return view('animals.flock.cios.edit', compact('cios', 'animals', 'title'));
+    }
+
+    public function update(CioRequest $cioRequest, AnimalServices $animalServices,
+                           Request $request, AnimalHeat $animalHeat, $id)
+    {
+        $title = 'edit-cio';
+        $cios = AnimalHeat::find($id);
+        $data = $cioRequest->all();
+        $data = $animalServices->updatePartoPrevisto($request, $data);
+        $data = $animalServices->status($request, $data);
+        $data = $animalServices->create_by($request, $data);
+
+        $cios->update($data);
+
+        $mensagem = $cioRequest->mensagem;
+        $cioRequest->session()->flash('alert-warning', 'Cio Atualizado !',
+            'alert-danger', 'Oops! não foi possível atuaizar!');
+
+        return redirect()->route('cio.index')->with($title);
     }
 
     public function show($id)
@@ -56,37 +89,5 @@ class AnimalHeatController extends Controller
         foreach ($animals as $animal)
             $animal->profile;
         return view('animals.flock.cios.show', compact('cio', 'title', 'animal'));
-    }
-
-    public function edit(AnimalHeat $animalHeat, $id)
-    {
-        $title = 'Edit Cio';
-        $cios = AnimalHeat::find($id);
-        $animals = Animal::all();
-
-        return view('animals.flock.cios.edit', compact('cios', 'animals', 'title'));
-    }
-
-    public function update(CioRequest $cioRequest, Request $request, CioRepository $cioRepository, $id)
-    {
-        $cios = AnimalHeat::find($id);
-        $data = $cioRequest->all();
-        AnimalHeat::update($data);
-
-        $mensagem = $request->mensagem;
-        $request->session()->flash('alert-warning', 'Cio Atualizado !',
-            'alert-danger', 'Oops! não foi possível atuaizar!');
-
-        return redirect()->route('cio.index');
-    }
-
-    public function destroy(CioRequest $request, $id)
-    {
-        $cios = Cio::find($id)->all();
-        Cio::destroy($cios);
-
-        $mensagem = $request->mensagem;
-        $request->session()->flash('alert-warning', 'Cio Deletado !',
-            'alert-danger', 'Oops! não foi possível deletar!');
     }
 }

@@ -46,7 +46,6 @@
                         @include('layouts.flash-message')
                     </div>
                     <div class="table-responsive p-lg-3">
-{{--                        Total Data : <span id="total_records"></span>--}}
                         <table class="table align-items-center table-flush" id="user-list-table">
                             <thead>
                             <tr>

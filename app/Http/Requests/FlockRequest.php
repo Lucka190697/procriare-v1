@@ -24,7 +24,7 @@ class FlockRequest extends FormRequest
         $hoje = $atual->format('Y-m-d');
         return [
             'code' => 'required|unique:animals|numeric',
-            'name' => 'required|unique:animals|string',
+            'name' => 'required|unique:animals|string|min:4|max:255',
             'born_date' => 'required|after_or_equal:2010/01/01|before_or_equal:' . $hoje,
             'sex' => 'required',
             'class' => 'required',
@@ -38,10 +38,11 @@ class FlockRequest extends FormRequest
     {
         return [
             'code.required' => 'O id é necessário ser preenchido corretamente com números somente!',
-            'code.unique' => 'O id é o número de identificação do animal e deve ser único!'
-                . 'Este número já está registrado no sistema!',
+            'code.unique' => 'O id é o número de identificação do animal e deve ser único!',
             'name.required' => 'O nome é necessário! Se houve alum erro, pode ser que você tenha '
                 . 'digitado um nome que já exista cadastrado no sistema',
+            'name.min:4' => 'Use um nome com no mínimo 4 caracteres',
+            'name.max:255' => 'Use um nome com no máximo 225 caracteres',
             'born_date.required' => 'A data de Nascimento é necessária!'
                 . 'Não use datas muito antigas como anteriores a 2001 e nem datas posteriores a de hoje',
             'born_date.after_or_equal:2010/01/01' => 'Não use datas anteriores a 01/01/2010',

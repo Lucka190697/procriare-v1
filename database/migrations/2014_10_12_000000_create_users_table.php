@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('thumbnail')->nullable();
             $table->integer('is_responsible_farm')->nullable();
+            $table->softDeletes();
 
             $table->rememberToken();
             $table->timestamps();

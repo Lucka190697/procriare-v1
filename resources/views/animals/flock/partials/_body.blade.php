@@ -1,5 +1,5 @@
 <td>
-    <img src="<?php echo asset('animals/' . $animal->thumbnail) ?>"
+    <img src="{{asset('animals/' . $animal->thumbnail) }}"
          alt="image"
          width="50"
          height="50"
@@ -7,7 +7,7 @@
 </td>
 <td> {{ $animal->id }}</td>
 <td> {{$animal->name }} </td>
-<td> {{$animal->born_date }} </td>
+<td> {{$animal->born_date = date('d/m/Y', strtotime($animal->born_date))}} </td>
 <td>@if ($animal->sex == 'femeale')
         <i class="fa fa-venus"></i>
         <span>F</span>

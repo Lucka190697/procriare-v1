@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AnimalHeat;
 use App\Models\Farm;
 use Illuminate\Http\Request;
 use App\Http\Requests\FlockRequest;
@@ -11,6 +12,7 @@ use App\Services\AnimalStatus;
 use Spatie\Permission\Models\Role;
 //use const http\Client\Curl\AUTH_ANY;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\PDF;
 
 class AnimalController extends Controller
 {
@@ -45,8 +47,9 @@ class AnimalController extends Controller
         $data = $auxAnimal->created_by($data);
         $data = $auxAnimal->farm_by($data);
 
-//        $farm->animals()->create($data);
-        $animal->create($data);
+//        $animal->create($data);
+
+
         $mensagem = $request->mensagem;
         $request->session()->flash('alert-success', 'Animal cadastrado!',
             'alert-danger', 'Oops! não foi possível cadastrar!');
@@ -84,6 +87,24 @@ class AnimalController extends Controller
         return view('animals.flock.show', compact('animals'));
     }
 
+    public function destroy(Animal $animal, AnimalHeat $animalHeat, Request $request, $id)//$animal_id
+    {
+        $cio = $animalHeat->find($id);
+//        dd($cio);
+
+        $animal = Animal::find($id);
+
+        Animal::destroy($id);
+        AnimalHeat::deleting($cio);
+
+        $mensagem = $request->mensagem;
+        $request->session()->flash('alert-warning', 'Animal Deletado !',
+            'alert-danger', 'Oops! não foi possível deletar!');
+
+        return redirect()->route('animals.index')
+            ->with('success', 'User deleted successfully');
+    }
+
 
     /* SEARCH AJAX */
 
@@ -106,6 +127,19 @@ class AnimalController extends Controller
                 return Response($output);
             }
         }
+    }
+
+    public function animalsReports(PDF $pdf)
+    {
+        $animals = Animal::all();
+        $farms = Farm::all();
+        foreach ($farms as $farm_item) {
+            $farm_item->name;
+        }
+        $report = $pdf->loadView('reports.flock-registers',
+            compact('animals', 'farm_item', "relatorio-todos-os-animais-de-$farm_item->name"));
+
+        return $report->download('flock-all.pdf');
     }
 
 

@@ -17,7 +17,7 @@
                        class="form-control form-control-alternative
                        {{$errors->has('code') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Número de Identificação, número do brinco"
-                       value="{{old('code') ?? $item->code ?? '' }}" required/>
+                       value="{{old('code') ?? $animals->code ?? '' }}" required/>
                 <small class="form-text"> Número do Brinco do animal. Não pode ficar em branco!</small>
             </div>
             <div class="form-group mb-3">
@@ -26,7 +26,7 @@
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 @if($errors->has('name'))
                     <div class="float-lg-right badge badge-danger mb-2">
-                        Insira um nome válido, exemplo: Mimosa
+                        Insira um nome válido, exemplo: Mimosa, com no mínimo 5 caracteres
                     </div>
                 @endif
                 <input name="name"
@@ -34,7 +34,7 @@
                        id="nome"
                        class="form-control border {{$errors->has('name') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Nome ou apelido do animal"
-                       value="{{old('name') ?? $item->name ?? '' }}" required/>
+                       value="{{old('name') ?? $animals->name ?? '' }}" required/>
                 <small class="form-text"> Nome do animal, apelido</small>
             </div>
             <div class="form-group mb-3">
@@ -53,7 +53,7 @@
                        id="dt_nascimento"
                        class="form-control border {{$errors->has('born_date') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Data de nascimento do animal"
-                       value="{{old('born_date') ?? $item->born_date ?? '' }}" required/>
+                       value="{{old('born_date', $animals->born_date) }}" required/>
                 <small class="form-text"> Dia, mês e ano que o animal nasceu</small>
             </div>
             <div class="form-group mb-3">
@@ -67,11 +67,15 @@
                 @endif
                 <select
                     class="form-control border {{$errors->has('sex') ? 'text-danger border-danger is-invalid' : ''}}"
-                    data-value="{{old('sex') ?? $item->sex ?? 'O campo Tipo está em branco!' }}"
                     id="sexo" name="sex" required>
-                    <option value="" selected>Selecione</option>
-                    <option value="femeale" name="Fêmea"> Femea</option>
-                    <option value="male" name="Macho"> Macho</option>
+                    <option value="{{old('sex') ?? $animals->sex ?? '' }}" selected>
+                        {{$animals->sex == 'femeale' ? 'Femea' : 'Macho'}}
+                    </option>
+                    @if($animals->sex == 'femeale')
+                        <option value="male">Macho</option>
+                    @elseif($animals->sex == 'femeale')
+                        <option value="male">Macho</option>
+                    @endif
                 </select>
             </div>
             <div class="form-group mb-3">
@@ -86,7 +90,10 @@
                 @endif
                 <select
                     class="form-control border {{$errors->has('breed') ? 'text-danger border-danger is-invalid' : ''}}"
-                    id="raca" name="breed" data-value="{{old('breed') ?? $item->breed ?? '' }}">
+                    id="raca" name="breed">
+                    <option value="{{old('breed') ?? $animals->breed ?? '' }}" selected>
+                        {{old('breed') ?? $animals->breed ?? '' }}
+                    </option>
                     <option value=" - ">Selecione</option>
                     <option value="Jersey">Jersey</option>
                     <option value="Nelore">Nelore</option>
@@ -117,9 +124,8 @@
             </label>
             <select
                 class="form-control border {{$errors->has('class') ? 'text-danger border-danger is-invalid' : ''}}"
-                id="classificacao" name="class" required
-                data-value="{{old('class') ?? $item->class ?? '' }}">
-                <option value="" selected>Selecione</option>
+                id="classificacao" name="class" required>
+                <option value="">Selecione</option>
                 <option value="heifer">
                     Novilha (Fêmea que já atingiu a maturidade sexual mas ainda não criou)
                 </option>
@@ -162,12 +168,63 @@
                        id="profile"
                        class="form-control border {{$errors->has('thumbnail') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="file"
-                       value="{{old('thumbnail') ?? $item->thumbnail ?? '' }}"/>
+                       value="{{old('thumbnail') ?? $animals->thumbnail ?? '' }}"/>
                 <small class="form-text"> Por favor, escolha uma imagem no formato jpg, jpeg, gif ou png</small>
             </div>
         </div>
         <!-- filiação -->
-        @include('animals.flock.partials.filiacao')
+        <div class="form-group mb-3">
+            <label class="form-control-label" for="pai">
+                Filiação Paterna, (Pai)
+                <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+                @if($errors->has('father'))
+                    <div class="float-lg-right badge badge-danger mb-2">
+                        Campo Pai é Necessário!
+                    </div>
+                @endif
+            </label>
+            <select
+                name="father" id="pai"
+                class="form-control border{{$errors->has('father') ? 'text-danger border-danger is-invalid' : ''}}">
+                <option value="" selected> Selecione</option>
+                <option value="unknow">Touro Desconhecido</option>
+                @if (($animals->sex == 'male') && (($animals->class == 'bull-reproductive')))
+                    <option value="{{ $animals->id }}">[ {{ $animals->id }} ] {{ $animals->name }} </option>
+                @endif
+            </select>
+            <small class="text-warning">
+                É preciso que o Touro pai esteja cadastrado.<br>
+                Se não, cadastre este primeiro como pai desconhecido!
+            </small>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-control-label" for="mae">
+                Filiação Materna, (Mãe)
+                <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+                @if($errors->has('mother'))
+                    <div class="float-lg-right badge badge-danger mb-2">
+                        Campo Mãe é Necessário!
+                    </div>
+                @endif
+            </label>
+            <select
+                name="mother" id="mae"
+                class="form-control border {{$errors->has('mother') ? 'text-danger border-danger is-invalid' : ''}}">
+                <option value="" selected> Selecione</option>
+                <option value="unknow"> Mae Desconhecida</option>
+                @if (($animals->sexo == 'femeale') && (($animals->class == 'cow-lactating'))
+                 || ($animals->class == 'cow-non-lactating') || ($animals->class = 'heifer'))
+                    <option value="{{ $animals->id }}">
+                        [ {{ $animals->id }} ] - {{ $animals->name }}, {{ $animals->class }}
+                    </option>
+                @endif
+            </select>
+            <small class="text-warning">
+                Se a mãe não estiver cadastrada cadastre-a primeiro<br>
+                Se não mantenha "Desconhecida"
+            </small>
+        </div>
         <!-- /filiacao -->
 
         <div class="form-group mb-3">

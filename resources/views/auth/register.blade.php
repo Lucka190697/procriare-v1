@@ -103,25 +103,6 @@
                                 @endif
                             </div>
 
-                            <div class="text-dark form-group{{ $errors->has('thumnail') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                    </div>
-                                    <input
-                                        class="text-dark form-control{{ $errors->has('thumnail') ? ' is-invalid' : '' }}"
-                                        type="file" name="thumnail">
-                                </div>
-                                @if ($errors->has('thumnail'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>
-                                            Por favor entre com um arquivo de imagem no formato jpeg,png,jpg,gif ou svg
-                                            com no máximo 2GB.
-                                        </strong>
-                                    </span>
-                                @endif
-                            </div>
-
                             <div class="row my-4">
                                 <div class="col-12">
                                     <div class="custom-control custom-control-alternative custom-checkbox">

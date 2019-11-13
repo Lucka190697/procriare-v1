@@ -68,9 +68,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         if ($data['terms-check'] == 'on') {
-            if (!isset($data['thumbnail'])) {
-                $data = UserRepository::profileDefault($data);
-            }
+            $data = UserRepository::profileDefault($data);
 
             $user = User::create([
                 'name' => $data['name'],

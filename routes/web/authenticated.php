@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
@@ -19,9 +19,11 @@ Route::group(['prefix' => 'animals'], function () {
     Route::put('/update/{id}', 'AnimalController@update')->name('animals.update');
     Route::get('/show/{id}', 'AnimalController@show')->name('animals.show');
     Route::get('/destroy/{id}', 'AnimalController@destroy')->name('animals.destroy');
-    Route::get('/animals/search', 'animalsController@search')->name('animals.search');
-    Route::get('/animals/status/{id}/{status}', 'AnimalStatus@status')->name('animals.status');
+//    Route::get('/destroy/{id}/{animal_id}', 'AnimalController@destroy')->name('animals.destroy');
+    Route::get('/animals/search', 'AnimalsController@search')->name('animals.search');
+    Route::get('/reports/all', 'AnimalController@animalsReports')->name('animals.report');
 });
+
 
 Route::group(['prefix' => 'cio'], function () {
     Route::get('/', 'AnimalHeatController@index')->name('cio.index');
@@ -30,7 +32,6 @@ Route::group(['prefix' => 'cio'], function () {
     Route::get('/edit/{id}', 'AnimalHeatController@edit')->name('cio.edit');
     Route::put('/update/{id}', 'AnimalHeatController@update')->name('cio.update');
     Route::get('/show/{id}', 'AnimalHeatController@show')->name('cio.show');
-    Route::get('/destroy/{id}', 'AnimalHeatController@destroy')->name('cio.destroy');
 });
 
 Route::namespace('Admin')

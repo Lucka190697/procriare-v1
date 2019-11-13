@@ -9,12 +9,12 @@
                 <div class="card shadow">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ route('flock.create') }}"
+                            <a href="{{ route('animals.create') }}"
                                class="btn btn-primary float-right">
                                 Cadastrar outro
                                 <i class="fa fa-redo ml-3"></i>
                             </a>
-                            <a href="{{ route('flock.index') }}"
+                            <a href="{{ route('animals.index') }}"
                                class="btn btn-outline-primary float-right mr-2">
                                 <i class="fa fa-chevron-left mr-2"></i>
                                 Voltar
@@ -31,35 +31,35 @@
                                     <ul class="list-group">
                                         <li class="list-group-item bg-gradient-indigo text-white">
                                             Cio Nº: <strong> <?php echo $cio->id ?> </strong>
-                                            <a href="{{ route('flock.edit', $cio->id) }}"
+                                            <a href="{{ route('animals.edit', $cio->id) }}"
                                                class="text-white float-right">
                                                 <i class="fa fa-edit"></i> Editar
                                             </a>
                                         </li>
                                         <li class="list-group-item">
                                             Animal:
-                                            <strong> {{ $cio->id_animals }},</strong>
-                                            <strong> {{ $animal->nome }} </strong>
+                                            <strong> {{ $cio->animal_id }} | </strong>
+                                            <strong> {{ $animal->name }} </strong>
                                         </li>
                                         <li class="list-group-item">
                                             Data do Cio:
-                                            <strong>{{ $cio->dt_cio }} </strong>
+                                            <strong>{{ $cio->date_animal_heat }} </strong>
                                         </li>
                                         <li class="list-group-item">
                                             Data da Cobertura:
-                                            <strong>{{ $cio->dt_cobertura }} </strong>
+                                            <strong>{{ $cio->date_coverage }} </strong>
                                         </li>
                                         <li class="list-group-item">
                                             Tipo:
-                                            <strong> {{ $cio->tipo }} </strong>
+                                            <strong> {{ $cio->childbirth_type }} </strong>
                                         </li>
                                         <li class="list-group-item">
                                             Pai:
-                                            <strong> {{ $cio->pai }} </strong>
+                                            <strong> {{ $cio->father }} </strong>
                                         </li>
                                         <li class="list-group-item">
                                             Data do Parto Previsto:
-                                            <strong> {{ $cio->dt_parto_previsto }} </strong>
+                                            <strong> {{ $cio->date_childbirth_foreseen }} </strong>
                                         </li>
                                         <li class="list-group-item">
                                             Status:
@@ -67,15 +67,27 @@
                                         </li>
                                         <li class="list-group-item">
                                             Data do Parto:
-                                            <label class="text-warning">{{$cio->dt_parto}}...</label>
+                                            @if(!isset($cio->date_childbirth))
+                                                <label class="text-warning">
+                                                    <i class="text-warning fa fa-clock"></i>Pendente
+                                                </label>
+                                            @elseif($cio->status == "abortion")
+                                                <label class="text-danger">
+                                                    <i class="text-danger fa fa-times"></i>Aborto
+                                                </label>
+                                            @else
+                                                <label class="text-success">
+                                                    <i class="text-success fa fa-check"></i> {{$cio->date_childbirth}}
+                                                </label>
+                                            @endif
                                         </li>
                                         <li class="list-group-item">
                                             Criado em:
-                                            <strong> <?php echo $cio->created_at ?> </strong>
+                                            <strong> {{$cio->created_at}} </strong>
                                         </li>
                                         <li class="list-group-item">
                                             Criado pelo usuário ID:
-                                            <strong> <?php echo $cio->created_by ?> </strong>
+                                            <strong> {{ $cio->responsible_id }}</strong>
                                         </li>
                                     </ul>
                                 </div>
@@ -85,7 +97,7 @@
                                             {{$animal->nome}}
                                         </div>
                                         <div class="card-body">
-                                            <img src="<?php echo asset('animals/' . $animal->profile) ?>"
+                                            <img src="{{asset('animals/' . $animal->thumbnail) }}"
                                                  alt="image"
                                                  width="250"
                                                  height="auto">

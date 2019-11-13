@@ -4,12 +4,11 @@
         <div class="btn-group">
             {{--        @method('delete')--}}
             <a class="btn btn-success" href="{{ route('admin.user.edit', $user) }}">
-                <i class="fa fa-pen"></i> @lang('labels.Edit')
+                <i class="fa fa-pen"></i>
             </a>
             <button class="btn btn-danger text-white" type="submit"
-                    onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                    onclick="confirm('{{ __("Tem certeza que quer excluir esse usuário?") }}') ? this.parentElement.submit() : ''">
                 <i class="fa fa-trash"></i>
-                Remover
             </button>
         </div>
     </form>
@@ -17,6 +16,5 @@
     <a class="btn  btn-success"
        href="{{ route('profile.edit') }}">
         <i class="fa fa-pen"></i>
-        Editar
     </a>
 @endif

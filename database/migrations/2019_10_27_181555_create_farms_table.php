@@ -20,6 +20,7 @@ class CreateFarmsTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('auth_user');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

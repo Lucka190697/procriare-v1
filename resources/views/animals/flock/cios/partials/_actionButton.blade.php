@@ -5,7 +5,4 @@
     <a class="dropdown-item text-success" href="{{route('cio.edit', $cio->id)}}">
         <i class="fa fa-edit text-success"></i> Editar
     </a>
-    <a class="dropdown-item text-danger" href="{{route('cio.destroy', $cio->id )}}">
-        <i class="fa fa-eraser text-danger"></i> Deletar
-    </a>
 </div>

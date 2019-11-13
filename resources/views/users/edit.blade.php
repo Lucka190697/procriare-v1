@@ -56,7 +56,7 @@
                                     <label class="form-control-label" for="input-phone">{{ __('Telefone') }}</label>
                                     <input type="text" name="phone" id="input-phone"
                                            class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}"
-                                           placeholder="{{ __('Telefone') }}" value="{{ old('phone') }}" required>
+                                           placeholder="{{ __('Telefone') }}" value="{{ old('phone', $user->phone) }}" required>
 
                                     @if ($errors->has('phone'))
                                         <span class="invalid-feedback" role="alert">
@@ -88,10 +88,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label"
-                                           for="input-thumbnail">@lang('labels.thumbnail')</label>
+                                           for="input-thumbnail">Imagem de perfil</label>
                                     <input type="file" name="thumbnail" id="input-thumbnail"
                                            class="form-control form-control-alternative"
-                                           placeholder="@lang('labels.thumbnail')" value="">
+                                           placeholder="@lang('labels.thumbnail')">
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">

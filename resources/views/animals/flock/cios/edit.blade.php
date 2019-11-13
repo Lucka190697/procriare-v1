@@ -29,7 +29,7 @@
                                   method="POST"
                                   enctype="multipart/form-data"
                                   name="user-form"
-                                  action="{{route('cio.update', $cios)}}">
+                                  action="{{route('cio.update', $cios->id)}}">
                                 {{ csrf_field() }}
                                 <input name="_method" type="hidden" value="PUT">
                                 @include('animals.flock.cios.partials._edit-form')

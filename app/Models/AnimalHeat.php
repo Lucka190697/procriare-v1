@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AnimalHeat extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'animal_id',//id
         'date_animal_heat',//dt_cio
@@ -17,6 +20,8 @@ class AnimalHeat extends Model
         'status',//status
         'responsible_id'//usuario q cadastrou
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function animal()
     {

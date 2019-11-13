@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Animal extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'code',
         'name',
@@ -20,6 +22,8 @@ class Animal extends Model
         'farm_id',
         'responsible_id'
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function farm()
     {

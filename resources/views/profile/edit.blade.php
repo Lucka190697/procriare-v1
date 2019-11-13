@@ -69,8 +69,8 @@
                                             name="thumbnail"
                                             id="input-profile"
                                             class="form-control form-control-alternative{{ $errors->has('thumbnail') ? ' is-invalid' : '' }}"
-                                            placeholder="{{old('profile', auth()->user()->thumbnail)}}"
-                                            value="{{old('profile', auth()->user()->thumbnail)}}">
+                                            placeholder="{{old('thumbnail', auth()->user()->thumbnail)}}"
+                                            value="{{old('thumbnail', auth()->user()->thumbnail)}}">
 
                                     @if ($errors->has('thumbnail'))
                                         <span class="invalid-feedback" role="alert">
