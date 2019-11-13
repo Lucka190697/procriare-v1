@@ -31,8 +31,6 @@
                         @endif
                     </td>
                     <td class="btn-group">
-                        <a href="#" class="btn btn-sm btn-primary">
-                            <i class="fa fa-eye mr-2"></i>Ver</a>
                         <a href="{{route('cio.edit', $cio->id)}}" class="btn btn-sm btn-success">
                             <i class="fa fa-list mr-2"></i>Editar</a>
                         {{--                    <a href="#" class="btn btn-sm btn-default">Adiar</a>--}}

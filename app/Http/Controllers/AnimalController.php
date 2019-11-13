@@ -47,9 +47,7 @@ class AnimalController extends Controller
         $data = $auxAnimal->created_by($data);
         $data = $auxAnimal->farm_by($data);
 
-//        $animal->create($data);
-
-
+        $animal->create($data);
         $mensagem = $request->mensagem;
         $request->session()->flash('alert-success', 'Animal cadastrado!',
             'alert-danger', 'Oops! não foi possível cadastrar!');
@@ -87,15 +85,13 @@ class AnimalController extends Controller
         return view('animals.flock.show', compact('animals'));
     }
 
-    public function destroy(Animal $animal, AnimalHeat $animalHeat, Request $request, $id)//$animal_id
+    public function destroy(AnimalHeat $animalHeat, Request $request, $id)//$animal_id
     {
         $cio = $animalHeat->find($id);
-//        dd($cio);
+        dd($cio->id);
 
         $animal = Animal::find($id);
-
         Animal::destroy($id);
-        AnimalHeat::deleting($cio);
 
         $mensagem = $request->mensagem;
         $request->session()->flash('alert-warning', 'Animal Deletado !',

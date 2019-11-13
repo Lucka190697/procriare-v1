@@ -99,7 +99,7 @@
                 <option value="">Selecione</option>
                 <option value="pending" selected>Pendente</option>
                 <option value="abortion">Aborto</option>
-                @if($cios->date_childbirth_foreseen < today())
+                @if($cios->date_childbirth_foreseen < today(timezone_version_get()))
                     <option value="success">Sucesso</option>
                 @endif
             </select>

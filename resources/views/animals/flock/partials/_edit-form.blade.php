@@ -126,6 +126,9 @@
                 class="form-control border {{$errors->has('class') ? 'text-danger border-danger is-invalid' : ''}}"
                 id="classificacao" name="class" required>
                 <option value="">Selecione</option>
+                <option value="{{old('class') ?? $animals->class ?? '' }}" selected>
+                    @lang("labels.$animals->class")
+                </option>
                 <option value="heifer">
                     Novilha (Fêmea que já atingiu a maturidade sexual mas ainda não criou)
                 </option>
@@ -186,7 +189,13 @@
             <select
                 name="father" id="pai"
                 class="form-control border{{$errors->has('father') ? 'text-danger border-danger is-invalid' : ''}}">
-                <option value="" selected> Selecione</option>
+                <option value="{{old('father') ?? $animals->class ?? '' }}" selected>
+                    @if($animals->father == 'unknow')
+                        @lang("labels.$animals->father")
+                    @else
+                        {{old('father') ?? $animals->father ?? '' }}
+                    @endif
+                </option>
                 <option value="unknow">Touro Desconhecido</option>
                 @if (($animals->sex == 'male') && (($animals->class == 'bull-reproductive')))
                     <option value="{{ $animals->id }}">[ {{ $animals->id }} ] {{ $animals->name }} </option>
@@ -211,13 +220,21 @@
             <select
                 name="mother" id="mae"
                 class="form-control border {{$errors->has('mother') ? 'text-danger border-danger is-invalid' : ''}}">
-                <option value="" selected> Selecione</option>
+                <option value="{{old('mother') ?? $animals->mother ?? '' }}" selected>
+                    @if($animals->mother == 'unknow')
+                        @lang("labels.$animals->mother")
+                    @else
+                        {{old('mother') ?? $animals->mother ?? '' }}
+                    @endif
+                </option>
                 <option value="unknow"> Mae Desconhecida</option>
-                @if (($animals->sexo == 'femeale') && (($animals->class == 'cow-lactating'))
-                 || ($animals->class == 'cow-non-lactating') || ($animals->class = 'heifer'))
-                    <option value="{{ $animals->id }}">
-                        [ {{ $animals->id }} ] - {{ $animals->name }}, {{ $animals->class }}
-                    </option>
+                @if($animals->id == $animals->farm_id)
+                    @if (($animals->sexo == 'femeale') && (($animals->class == 'cow-lactating'))
+                     || ($animals->class == 'cow-non-lactating') || ($animals->class = 'heifer'))
+                        <option value="{{ $animals->id }}">
+                            [ {{ $animals->id }} ] - {{ $animals->name }}, @lang("labels.$animals->class")
+                        </option>
+                    @endif
                 @endif
             </select>
             <small class="text-warning">
@@ -240,8 +257,10 @@
             <select
                 name="status" id="status"
                 class="form-control {{$errors->has('status') ? 'text-danger border-danger is-invalid' : ''}}">
-                <option value="">Selecione</option>
-                <option value="alive" selected>Vivo</option>
+                <option value="{{old('status') ?? $animals->status ?? '' }}" selected>
+                    @lang("labels.$animals->status")
+                </option>
+                <option value="alive">Vivo</option>
                 <option value="dead">Morto</option>
                 <option value="sold">Vendido</option>
             </select>

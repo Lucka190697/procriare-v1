@@ -182,8 +182,10 @@
                 <option value="" selected> Selecione</option>
                 <option value="unknow">Touro Desconhecido</option>
                 @foreach ($animals as $item)
-                    @if (($item->sex == 'male') && (($item->class == 'bull-reproductive')))
-                        <option value="{{ $item->id }}">[ {{ $item->id }} ] {{ $item->name }} </option>
+                    @if(auth()->user()->farm_id ==  $item->farm_id)
+                        @if (($item->sex == 'male') && (($item->class == 'bull-reproductive')))
+                            <option value="{{ $item->id }}">[ {{ $item->id }} ] @lang("labels.$item->name") </option>
+                        @endif
                     @endif
                 @endforeach
             </select>
@@ -209,11 +211,13 @@
                 <option value="" selected> Selecione</option>
                 <option value="unknow"> Mae Desconhecida</option>
                 @foreach ($animals as $item)
-                    @if (($item->sex == 'femeale') && (($item->class == 'cow-lactating'))
-                     || ($item->class == 'cow-non-lactating') || ($item->class = 'heifer'))
-                        <option value="{{ $item->id }}">
-                            [ {{ $item->id }} ] - {{ $item->name }}, {{ $item->class }}
-                        </option>
+                    @if(auth()->user()->farm_id ==  $item->farm_id)
+                        @if (($item->sex == 'femeale') && (($item->class == 'cow-lactating'))
+                         || ($item->class == 'cow-non-lactating') || ($item->class = 'heifer'))
+                            <option value="{{ $item->id }}">
+                                [ {{ $item->id }} ] - {{ $item->name }}, @lang("labels.$item->class")
+                            </option>
+                        @endif
                     @endif
                 @endforeach
             </select>

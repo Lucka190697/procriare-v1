@@ -36,12 +36,12 @@ class AnimalHeatController extends Controller
     {
         $title = 'create-cio';
         $data = $request->all();
-        $data = $services->animal_id($request, $data);
         $data = $services->managementFather($request, $data);
         $data = $services->status($request, $data);
         $data = $services->partoPrevisto($request, $data);
         $data = $services->create_by($request, $data);
 
+//        $cios = AnimalHeat::create($data);
         $animalHeat->create($data);
 
         $mensagem = $request->mensagem;

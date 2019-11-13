@@ -12,7 +12,7 @@
                                 <h3 class="mb-0">@lang('labels.Users')</h3>
                             </div>
                             <div class="col-lg-7 col-12">
-                                <form action="{{ route('user.search') }}" method="POST" role="search">
+                                <form action="{{ route('admin.user.search') }}" method="POST" role="search">
                                     {{ csrf_field() }}
                                     <div class="input-group">
                                         <input type="text" class="form-control"
