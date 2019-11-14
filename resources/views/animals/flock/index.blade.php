@@ -13,13 +13,13 @@
                                 <h3 class="mb-0">{{ __('Rebanho atual') }}</h3>
                             </div>
                             <div class="col-md-6 col-lg-7 mb-lg-0 mb-2">
-                                <form action="{{route('animals.search')}}" id="pesquisar" method="POST" role="search">
+                                <form action="{{route('animals.search')}}" id="pesquisar" method="post" role="search">
                                     {{ csrf_field() }}
                                     <div class="input-group">
                                         <input type="text" class="form-control"
                                                name="search" id="search"
                                                id="search" name="search"
-                                               placeholder="Search users">
+                                               placeholder="Pesquisar" required>
                                         <span class="input-group-btn">
                                         <button type="submit" class="btn btn-outline-light">
                                             <span class="fa fa-search"></span>
@@ -77,24 +77,6 @@
                     </div>
                 </div>
             </div>
-            <script type="javascript">
-                $('#search').on('keyup', function () {
-                    console.log('aki');
-                    $value = $(this).val();
-                    $.ajax({
-                        type: 'get',
-                        url: '{{route('animals.search')}}',
-                        data: {'search': $value},
-                        success: function (data) {
-                            $('tbody').html(data);
-                        }
-                    });
-                })
-            </script>
-
-            <script type="text/javascript">
-                $.ajaxSetup({headers: {'csrftoken': '{{ csrf_token() }}'}});
-            </script>
             @include('layouts.footers.auth')
         </div>
     </div>

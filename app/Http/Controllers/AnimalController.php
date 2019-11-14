@@ -102,41 +102,37 @@ class AnimalController extends Controller
     }
 
 
-    /* SEARCH AJAX */
-
-    public function search(Request $request)
-    {
-        if ($request->ajax()) {
-            $output = "";
-            $animals = DB::table('animals')
-                ->where('name', 'LIKE', '%' . $request->search . "%")->get();
-            dd($animals);
-            if ($animals) {
-                foreach ($animals as $key => $product) {
-                    $output .= '<tr>' .
-                        '<td>' . $animals->id . '</td>' .
-                        '<td>' . $animals->name . '</td>' .
-                        '<td>' . $animals->pai . '</td>' .
-                        '<td>' . $animals->mae . '</td>' .
-                        '</tr>';
-                }
-                return Response($output);
-            }
-        }
-    }
-
     public function animalsReports(PDF $pdf)
     {
         $animals = Animal::all();
         $farms = Farm::all();
-        foreach ($farms as $farm_item) {
+        foreach ($farms as $farm_item)
             $farm_item->name;
-        }
-        $report = $pdf->loadView('reports.flock-registers',
-            compact('animals', 'farm_item', "relatorio-todos-os-animais-de-$farm_item->name"));
+
+        foreach ($animals as $animal)
+            $animal->id;
+
+        $report = $pdf->
+        loadView('reports.flock-registers',
+            compact('animal', 'farm_item', "Total-Animais"))
+            ->setPaper('A4', 'landscape')->stream();
 
         return $report->download('flock-all.pdf');
     }
 
+    public function search(Request $request, Animal $animal)
+    {
+        $title = 'search';
+        $dataForm = $request->all();
+        $users = $animal->search($dataForm);
 
+        $farms = Farm::all();
+        foreach ($farms as $farm_item) {
+            $farm_item->auth_user;
+        }
+
+        $animals = Animal::orderBy('id', 'DESC')->paginate(10);
+
+        return view('animals.flock.index', compact(['users'], 'title', 'farms', 'farm_item', 'animals'));
+    }
 }

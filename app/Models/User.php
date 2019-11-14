@@ -58,4 +58,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Animal::class, 'responsible_id', 'id');
     }
+
+    /*SEARCH*/
+    public function search(Array $data)
+    {
+        $users = $this->where(function ($query) use ($data) {
+            if (isset($data['name']))
+                $query->where('name', 'like', '%' . $data['name'] . '%');
+        });
+        return $users->get();
+    }
 }

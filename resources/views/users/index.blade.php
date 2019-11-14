@@ -30,7 +30,7 @@
                                     <a href="{{route('admin.user.index')}}" class="btn btn-danger">
                                         <i class="fa fa-arrow-left"></i>@lang('labels.Back')</a>
                                 @endif
-                                @if($title == 'Users')
+                                @if($title == 'User')
                                     <a href="{{ route('admin.user.create') }}" class="btn btn-primary">
                                         <i class="fa fa-plus mr-2"></i>@lang('labels.Add User')</a>
                                 @endif
@@ -65,7 +65,7 @@
                                 {{$users->links()}}
                             @endif
                             @if($title == 'search')
-                                <a href="{{route('user.index')}}" class="btn btn-sm btn-danger">
+                                <a href="{{route('admin.user.index')}}" class="btn btn-sm btn-danger">
                                     <i class="fa fa-arrow-left"></i>@lang('labels.Back')
                                 </a>
                             @endif

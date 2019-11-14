@@ -15,11 +15,11 @@
                                 </h3>
                             </div>
                             <div class="col-md-6 col-lg-7 mb-lg-0 mb-2">
-                                <form action="#" id="pesquisar" method="post" role="search">
+                                <form action="{{route('cio.search')}}" id="pesquisar" method="post" role="search">
                                     {{ csrf_field() }}
                                     <div class="input-group">
                                         <input type="text" class="form-control"
-                                               name="nome" placeholder="Search users">
+                                               name="nome" placeholder="Pesquisar">
                                         <span class="input-group-btn">
                                         <button type="submit" class="btn btn-outline-light">
                                             <span class="fa fa-search"></span>
@@ -50,9 +50,12 @@
                             </thead>
                             <tbody>
                             @foreach($cios as $cio)
-                                <tr>
-                                    @include('animals.flock.cios.partials._body')
-                                </tr>
+                                {{--                                @if($cio->farm_id == auth()->user()->farm_id)--}}
+                                @if($animal->farm_id == $farm->auth_user)
+                                    <tr>
+                                        @include('animals.flock.cios.partials._body')
+                                    </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         </table>

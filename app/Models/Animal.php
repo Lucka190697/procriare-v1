@@ -39,4 +39,15 @@ class Animal extends Model
     {
         return $this->belongsTo(User::class, 'responsible_id', 'id');
     }
+
+
+    /*SEARCH*/
+    public function search(Array $data)
+    {
+        $animals = $this->where(function ($query) use ($data) {
+            if (isset($data['name']))
+                $query->where('name', 'like', '%' . $data['name'] . '%');
+        });
+        return $animals->get();
+    }
 }

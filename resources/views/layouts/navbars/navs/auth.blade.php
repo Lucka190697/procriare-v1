@@ -7,13 +7,13 @@
         </a>
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
-{{--            <li class="nav-item">--}}
-{{--                <a href="{{ route('animals.index') }}" class="nav-link">--}}
-{{--                    <i class="fa fa-crosshairs mr-2"></i>--}}
-{{--                    @lang('labels.Total Flock')--}}
+            <li class="nav-item">
+                <a href="{{ route('animals.index') }}" class="nav-link">
+                    <i class="fa fa-crosshairs mr-2"></i>
+                    @lang('labels.Total Flock')
 {{--                    <span class="badge badge-primary ml-1"> 34 </span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="{{route('animals.report')}}" class="nav-link">
                     <i class="fa fa-calendar mr-2"></i>Gerar Relatório</a>

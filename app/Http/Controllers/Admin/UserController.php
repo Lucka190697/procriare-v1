@@ -16,12 +16,13 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\DeclareDeclare;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
     public function index(Request $request, Farm $farm)
     {
-        $title = 'Users';
+        $title = 'User';
         $farms = Farm::all();
         foreach ($farms as $farm_item) {
             $farm_item->id;
@@ -109,9 +110,18 @@ class UserController extends Controller
             ->with('success', 'User deleted successfully');
     }
 
-    public function search()
+    public function search(Request $request, User $user)
     {
-        dd('pesquisar');
-        return redirect()->route('admin.user.index');
+        $title = 'search';
+        $dataForm = $request->all();
+        $users = $user->search($dataForm);
+
+        $farms = Farm::all();
+        foreach ($farms as $farm_item) {
+            $farm_item->id;
+        }
+
+        return view('users.index', compact(['users'], 'title', 'farms', 'farm_item'));
+//        return view('users.index', compact(['users'], 'title'));
     }
 }

@@ -27,4 +27,14 @@ class AnimalHeat extends Model
     {
         return $this->belongsTo(Animal::class, 'animal_id', 'id');
     }
+
+    /*SEARCH*/
+    public function search(Array $data)
+    {
+        $cios = $this->where(function ($query) use ($data) {
+            if (isset($data['name']))
+                $query->where('name', 'like', '%' . $data['name'] . '%');
+        });
+        return $cios->get();
+    }
 }

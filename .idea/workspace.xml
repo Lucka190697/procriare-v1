@@ -2,18 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52664281-1ce9-4003-8372-f61252e2020f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/animals/Gtggtrg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/gfcx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Filo--" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/profiles/Tiburcio" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/profiles/Tim Drake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/profiles/terrthertyt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/profiles/teste" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/profiles/tredef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/profiles/yjughrwtyhgjtrg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/procriare.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/procriare.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnimalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnimalController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnimalHeatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnimalHeatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/masks.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/masks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/pt-br/labels.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/pt-br/labels.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/_edit-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/_edit-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/_create-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/animals/flock/partials/_create-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/_edit-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/animals/flock/partials/_edit-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/event/cio-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/cio-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Animal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Animal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AnimalHeat.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AnimalHeat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/animals/flock/cios/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/animals/flock/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/navs/auth.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/navs/auth.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reports/flock-registers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/flock-registers.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web/authenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/authenticated.php" afterDir="false" />
     </list>
@@ -147,6 +159,7 @@
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/nicolaslopezj/searchable" />
     </include_path>
   </component>
   <component name="ProjectId" id="1SnTbyd4uFyJfGIOf6V2zQS5FZP" />
@@ -212,7 +225,7 @@
       <workItem from="1573299781572" duration="261000" />
       <workItem from="1573300059651" duration="29895000" />
       <workItem from="1573507725083" duration="22248000" />
-      <workItem from="1573648961289" duration="17203000" />
+      <workItem from="1573648961289" duration="32691000" />
     </task>
     <servers />
   </component>

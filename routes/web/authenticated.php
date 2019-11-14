@@ -6,6 +6,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+//    Route::post('/search', 'UserController@search')->name('user.search');
 });
 
 /* animals // REBANHO */
@@ -18,8 +19,7 @@ Route::group(['prefix' => 'animals'], function () {
     Route::put('/update/{id}', 'AnimalController@update')->name('animals.update');
     Route::get('/show/{id}', 'AnimalController@show')->name('animals.show');
     Route::get('/destroy/{id}', 'AnimalController@destroy')->name('animals.destroy');
-//    Route::get('/destroy/{id}/{animal_id}', 'AnimalController@destroy')->name('animals.destroy');
-    Route::get('/animals/search', 'AnimalsController@search')->name('animals.search');
+    Route::post('/search', 'AnimalController@search')->name('animals.search');
     Route::get('/reports/all', 'AnimalController@animalsReports')->name('animals.report');
 });
 
@@ -31,6 +31,7 @@ Route::group(['prefix' => 'cio'], function () {
     Route::get('/edit/{id}', 'AnimalHeatController@edit')->name('cio.edit');
     Route::put('/update/{id}', 'AnimalHeatController@update')->name('cio.update');
     Route::get('/show/{id}', 'AnimalHeatController@show')->name('cio.show');
+    Route::post('/search', 'AnimalHeatController@search')->name('cio.search');
 });
 
 Route::namespace('Admin')

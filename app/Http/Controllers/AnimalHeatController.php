@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Farm;
 use App\Services\AnimalServices;
 use App\Http\Requests\CioRequest;
 use App\Models\AnimalHeat;
 use App\Repositories\CioRepository;
 use App\Models\Animal;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 
 class AnimalHeatController extends Controller
@@ -18,9 +19,15 @@ class AnimalHeatController extends Controller
     {
         $title = 'Cio';
         $animals = Animal::all();
+        foreach ($animals as $animal)
+            $animal->farm_id;
+        $farms = Farm::all();
+        foreach ($farms as $farm)
+            $farm->auth_user = (int)$farm->auth_user;
 
         $cios = AnimalHeat::paginate($this->paginate);
-        return view('animals.flock.cios.index', ['cios' => $cios], compact('title', 'animals'));
+        return view('animals.flock.cios.index', ['cios' => $cios],
+            compact('title', 'animals', 'animal', 'farm'));
     }
 
     public function create(Animal $animal, $id)
@@ -89,5 +96,16 @@ class AnimalHeatController extends Controller
         foreach ($animals as $animal)
             $animal->profile;
         return view('animals.flock.cios.show', compact('cio', 'title', 'animal'));
+    }
+
+    public function search(Request $request, Animal $animal)
+    {
+        $title = 'search';
+        $dataForm = $request->all();
+        $animals = $animal->search($dataForm);
+
+        $cios = AnimalHeat::paginate($this->paginate);
+
+        return view('animals.flock.cios.index', compact(['users'], 'title', 'cios', 'animals'));
     }
 }
