@@ -127,6 +127,14 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('cio.index') }}" class="nav-link">
+                        <i class="fa fa-venus-mars mr-2"></i>@lang('labels.Cios')</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('animals.report')}}" class="nav-link">
+                        <i class="fa fa-calendar mr-2"></i>Gerar Relatório</a>
+                </li>
             </ul>
 
         </div>

@@ -23,7 +23,7 @@
                     Data do Cio
                 </label>
                 <input name="date_animal_heat"
-                       type="date"
+                       type="text"
                        id="dt_cio"
                        class="form-control {{ $errors->has('date_animal_heat') ? ' is-invalid' : '' }}"
                        placeholder="Nome ou apelido do animal"
@@ -38,7 +38,7 @@
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 </label>
                 <input name="date_coverage"
-                       type="date"
+                       type="text"
                        id="dt_cobertura"
                        class="form-control {{ $errors->has('date_coverage') ? ' is-invalid' : '' }}"
                        placeholder="Data da Cobertura"
@@ -99,7 +99,7 @@
                 <option value="">Selecione</option>
                 <option value="pending" selected>Pendente</option>
                 <option value="abortion">Aborto</option>
-                @if($cios->date_childbirth_foreseen < today(timezone_version_get()))
+                @if($cios->date_childbirth_foreseen < today())
                     <option value="success">Sucesso</option>
                 @endif
             </select>

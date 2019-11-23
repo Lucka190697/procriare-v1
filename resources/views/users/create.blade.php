@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-password-confirmation">
-                                        @lang('laels.Confirm Password')
+                                        Confirme a senha
                                     </label>
                                     <input type="password" name="password_confirmation" id="input-password-confirmation"
                                            class="form-control form-control-alternative"
@@ -96,11 +96,12 @@
                                 <div class="form-group">
                                     <label class="form-control-label"
                                            for="input-thumbnail">
-                                        @lang('labels.thumbnail')
+                                        Imagem de
+                                        @lang('labels.profile')
                                     </label>
                                     <input type="file" name="thumbnail" id="input-thumbnail"
                                            class="form-control form-control-alternative {{ $errors->has('thumbnail') ? ' is-invalid' : '' }}"
-                                           placeholder="@lang('labels.profile')s" value="{{old('thumbnail')}}}">
+                                           placeholder="Imagem de perfil" value="{{old('thumbnail')}}}">
                                     @if ($errors->has('thumbnail'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('thumbnail') }}</strong>

@@ -66,7 +66,7 @@ class AnimalController extends Controller
     public function update(Request $request, Animal $animal, AnimalRepository $auxAnimal, $id)
     {
         $current = Animal::find($id);
-        $data = $auxAnimal->updateAnimalProfile($current, $request);
+        $data = $auxAnimal->updateAnimalProfile($current);
         $data = $auxAnimal->created_by($data);
         $data = $auxAnimal->farm_by($data);
 
@@ -114,7 +114,7 @@ class AnimalController extends Controller
 
         $report = $pdf->
         loadView('reports.flock-registers',
-            compact('animal', 'farm_item', "Total-Animais"))
+            compact('animal', 'animals', 'farm_item', "Total-Animais"))
             ->setPaper('A4', 'landscape')->stream();
 
         return $report->download('flock-all.pdf');

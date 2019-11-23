@@ -29,11 +29,11 @@ Class AnimalRepository
             return UserRepository::profileDefault($data);
     }
 
-    public function updateAnimalProfile($current, $request)
+    public function updateAnimalProfile($current)
     {
-        $data = $request->all();
-        if ($request->thumbnail != null) {
-            $profileName = $request->name;
+        $data = $current->thumbnail;
+        if ($current->thumbnail != null) {
+            $profileName = $current->name;
             request()->thumbnail->move(public_path('animals/'), $profileName);
             $data['thumbnail'] = $profileName;
             return $data;

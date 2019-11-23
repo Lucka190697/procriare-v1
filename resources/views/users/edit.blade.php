@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
 @section('content')
-    @include('users.partials.header', ['title' => __('Edit User')])
+    @include('users.partials.header', ['title' => __('Editar Usuário')])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -10,7 +10,7 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">@lang('labels.User Management')</h3>
+                                <h3 class="mb-0">Gerenciamento de usuários</h3>
                             </div>
                             <div class="col-4 text-right">
                                 <a href="{{ route('admin.user.index') }}" class="btn btn-primary">
@@ -23,7 +23,7 @@
                               enctype="multipart/form-data">
                             @csrf
                             @method('put')
-                            <h6 class="heading-small text-muted mb-4">@lang('labels.Users Information')</h6>
+                            <h6 class="heading-small text-muted mb-4">Informações</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">@lang('labels.Name')</label>

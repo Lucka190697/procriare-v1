@@ -9,13 +9,13 @@
 <td> {{$animal->name }} </td>
 <td> {{$animal->born_date = date('d/m/Y', strtotime($animal->born_date))}} </td>
 <td>@if ($animal->sex == 'femeale')
-        <i class="fa fa-venus"></i>
+        <i class="fa fa-venus text-red"></i>
         <span>F</span>
-    @else <i class="fa fa-mars"></i>
+    @else <i class="fa fa-mars text-blue"></i>
         <span>M</span>
     @endif
 </td>
-<td>{{ $animal->class }}</td>
+<td>@lang("labels.$animal->class")</td>
 @if($animal->status == 'ativo')
     <td class="text-success text-uppercase">
         {{ $animal->status }} </td>

@@ -2,32 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52664281-1ce9-4003-8372-f61252e2020f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/animals/Filo--" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profiles/Tiburcio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profiles/Tim Drake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profiles/terrthertyt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profiles/teste" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profiles/tredef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profiles/yjughrwtyhgjtrg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/procriare.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/procriare.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckUserType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Bibi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Hulke" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Pitty" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Pitty-" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/amaya" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/rkfk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/profiles/DonnaTroy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnimalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnimalController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnimalHeatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnimalHeatController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Animal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Animal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AnimalHeat.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AnimalHeat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/AnimalRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/AnimalRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/AnimalServices.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AnimalServices.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/34567456" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Bolinha" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Bulinha" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Filo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Filo--" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Filo4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Filó" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Gtggtrg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Minisinha" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Nero" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Nero" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Sequinha" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Sinfrosia" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/gfcx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/qwed" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/wdf2e3rer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/Admin12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/FiloZinha" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/Lucas Alberto Matoso" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/Luquinhas" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/Sara Lance" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/Sinfra" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/Tiburcio" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/Tim Drake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/luckas" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/qw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/terrthertyt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/teste" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/tredef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/profiles/yjughrwtyhgjtrg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/animals/flock/cios/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/_edit-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/_edit-form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/animals/flock/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/navs/auth.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/navs/auth.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/flock-registers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/flock-registers.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web/authenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/authenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/_actionButton.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/animals/flock/partials/_actionButton.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/_body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/animals/flock/partials/_body.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/_create-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/animals/flock/partials/_create-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/event/cio-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/cio-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +197,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Repositories" />
+    <property name="last_opened_file_path" value="$USER_HOME$/TADS/5/3 - Desenvolvimento Web II/crud-com-relacionamento/crud-rel" />
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RecentsManager">
@@ -225,7 +252,13 @@
       <workItem from="1573299781572" duration="261000" />
       <workItem from="1573300059651" duration="29895000" />
       <workItem from="1573507725083" duration="22248000" />
-      <workItem from="1573648961289" duration="32691000" />
+      <workItem from="1573648961289" duration="32970000" />
+      <workItem from="1573736582617" duration="6492000" />
+      <workItem from="1574034029036" duration="4633000" />
+      <workItem from="1574266785716" duration="6067000" />
+      <workItem from="1574291585227" duration="121000" />
+      <workItem from="1574444460742" duration="4927000" />
+      <workItem from="1574466743054" duration="1224000" />
     </task>
     <servers />
   </component>

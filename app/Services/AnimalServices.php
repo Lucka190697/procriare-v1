@@ -4,6 +4,7 @@ namespace App\Services;
 
 //use http\Env\Request;
 use App\Http\Requests\CioRequest;
+use App\Models\Animal;
 use App\Repositories\CioRepository;
 use App\Enums\AnimalHeatStatusEnum;
 use DateTime;
@@ -63,6 +64,15 @@ Class AnimalServices
             $data['date_childbirth_foreseen'] = $partoPrevisto;
             return $data;
         }
+    }
+
+    public function partoSucesso($request, $data)
+    {
+        if ($data['status'] == 'success') {
+            dd(Animal::all());
+            redirect()->route('animals.create');
+        }
+        return $data;
     }
 
     public function create_by($request, $data)

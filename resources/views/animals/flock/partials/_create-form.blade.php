@@ -212,12 +212,13 @@
                 <option value="unknow"> Mae Desconhecida</option>
                 @foreach ($animals as $item)
                     @if(auth()->user()->farm_id ==  $item->farm_id)
-                        @if (($item->sex == 'femeale') && (($item->class == 'cow-lactating'))
-                         || ($item->class == 'cow-non-lactating') || ($item->class = 'heifer'))
+                        @if (($item->sex == 'femeale') && (($item->class == 'cow-lactating')))
+                         @if(($item->class == 'cow-non-lactating') or ($item->class = 'heifer'))
                             <option value="{{ $item->id }}">
                                 [ {{ $item->id }} ] - {{ $item->name }}, @lang("labels.$item->class")
                             </option>
                         @endif
+                    @endif
                     @endif
                 @endforeach
             </select>

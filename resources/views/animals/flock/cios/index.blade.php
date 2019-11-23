@@ -49,14 +49,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($cios as $cio)
-                                {{--                                @if($cio->farm_id == auth()->user()->farm_id)--}}
-                                @if($animal->farm_id == $farm->auth_user)
-                                    <tr>
-                                        @include('animals.flock.cios.partials._body')
-                                    </tr>
-                                @endif
-                            @endforeach
+{{--                            @if($animal->farm_id == $animal->farm_id)--}}
+                                @foreach($cios as $cio)
+                                    @if($cio->responsible_id == auth()->user()->farm_id)
+                                        <tr>
+                                            @include('animals.flock.cios.partials._body')
+                                        </tr>
+                                    @endif
+                                @endforeach
+{{--                            @endif--}}
                             </tbody>
                         </table>
                         <div class="card-footer py-4">

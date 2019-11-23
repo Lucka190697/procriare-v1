@@ -68,19 +68,21 @@ class AnimalHeatController extends Controller
     }
 
     public function update(CioRequest $cioRequest, AnimalServices $animalServices,
-                           Request $request, AnimalHeat $animalHeat, $id)
+                          AnimalHeat $animalHeat, $id)
     {
         $title = 'edit-cio';
         $cios = AnimalHeat::find($id);
         $data = $cioRequest->all();
-        $data = $animalServices->updatePartoPrevisto($request, $data);
-        $data = $animalServices->status($request, $data);
-        $data = $animalServices->create_by($request, $data);
+        $data = $animalServices->updatePartoPrevisto($cioRequest, $data);
+        $data = $animalServices->status($cioRequest, $data);
+        $data = $animalServices->create_by($cioRequest, $data);
+//        dd($data);
+        $data = $animalServices->partoSucesso($cioRequest, $data);
 
         $cios->update($data);
 
         $mensagem = $cioRequest->mensagem;
-        $cioRequest->session()->flash('alert-warning', 'Cio Atualizado !',
+        $cioRequest->session()->flash('alert-primary', 'Cio Atualizado !',
             'alert-danger', 'Oops! não foi possível atuaizar!');
 
         return redirect()->route('cio.index')->with($title);
